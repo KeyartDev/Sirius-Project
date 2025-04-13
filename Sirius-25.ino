@@ -32,7 +32,7 @@ YFS201C_S yfs;
 
 void setup() {
   Serial.begin(115200);
-  
+  setupWebsite();
   //analogReference(EXTERNAL); //НЕ РАБОТАЕТ НА ESP!
   Wire.begin();
 
