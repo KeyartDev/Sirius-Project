@@ -1,10 +1,24 @@
 #pragma once
 #include <GyverPortal.h>
-#include "variables.h"
+#include "GlobalVars.h"
 #include "RTC.h"
 
 GyverPortal ui;
-Time t;
+RTC_S rtc;
+
+const char *namesTH[] = {
+  "temp", "humidity"
+};
+
+const char *namesP[] = {
+  "pressure"
+};
+
+const char *namesWS[] = {
+  "wind speed", "water speed"
+};
+
+String pageTitle = "Гидрометеорологический буй"; //Заголовок веб-страницы
 
 void action() {
   if (ui.update()) {
@@ -37,11 +51,11 @@ void action() {
      } else if (ui.updateName() == "lbl/lmh/uv") {
        ui.answer(valueLMHUV);
      } else if (ui.updateName() == "lbl/date") {
-       ui.answer(t.getCurrentDate());
+       ui.answer(rtc.getCurrentDate());
      } else if (ui.updateName() == "lbl/day") {
-       ui.answer(t.getCurrentDayOfTheWeek());
+       ui.answer(rtc.getCurrentDayOfTheWeek());
      } else if (ui.updateName() == "lbl/time") {
-       ui.answer(t.getCurrentTime());
+       ui.answer(rtc.getCurrentTime());
      }
   } 
 
@@ -59,7 +73,7 @@ void action() {
 
 
 void build() {
-  t.initialize();
+  rtc.initialize();
   
   GP.BUILD_BEGIN();
   GP.THEME(GP_DARK);

@@ -2,40 +2,24 @@
 #ifndef VARIABLES_H
 # define VARIABLES_H
 
-//Макросы
-#define AP_SSID "DIRECT-g9-Pantum M6550 Series"
-#define AP_PASS "123456780"
+#include "Arduino.h"
+
 #define MPU9250_ADDR 0x68
 #define UV_PIN 12
-#define DHT11PIN 8 
+#define DHT11_PIN 8 
 #define HOLL_PIN 3
-#define YFS201_PIN 35
-#define TOPA 0.00750063755419211
-#define CJMCU_811_ADDRESS 0x5A
-#define DATCHIK_MUTNOSTI_PIN 1
-#define TdsSensorPin A0
-#define VREF 5.0              
-#define SCOUNT  30
-#define ERR "Ошибка!"
-#define LMH_LOW "Низкий"
-#define LMH_MEDIUM "Средний"
-#define LMH_HIGH "Высокий"
-
-inline const char *namesTH[] = {
-  "temp", "humidity"
-};
-
-inline const char *namesP[] = {
-  "pressure"
-};
-
-inline const char *namesWS[] = {
-  "wind speed", "water speed"
-};
+#define YFS201C_PIN 0
+#define CJMCU811_ADDRESS 0x5A
+#define CJMCU811_PIN 0
+#define DM_PIN 1
+#define TDS_PIN A0
+#define BMP180_PIN 0
+#define HMC58831L_PIN 0
+#define PH_PIN 0
+#define RTC_PIN 0
 
 
-
-inline String pageTitle{"Гидрометеорологический буй"}; //Заголовок веб-страницы
+const int MPU_PIN = 0;
 
 //Переменные, в которые необходимо записать данные с датчиков:
 inline String dataTemp{"???"}; //Температура
@@ -53,6 +37,4 @@ inline String dataWaterMin{"???"}; //Минерализация
 
 inline String valueLMHPolution{"Неизвестно"};
 inline String valueLMHUV{"Неизвестно"};
-
 #endif
-

@@ -1,18 +1,14 @@
-#include "variables.h"
+#pragma once
 
-int counter = 0;
+#include "GlobalVars.h"
+#include "Arduino.h"
 
-//ФОРМУЛА РАСЧЁТА СКОРОСТИ ОТСУТСТВУЕТ
-
-
-//Выполняемый код:
-void onSwitch() {
-  counter++;
-}
-
-namespace holl {
-  void init() {
-    attachInterrupt(digitalPinToInterrupt(HOLL_PIN), onSwitch, CHANGE);
-  }
-}
-
+class Holl_S {
+public:
+  void initialize();
+  String getWindSpeed();
+  static void onSwitch();
+  Holl_S();
+private:
+  
+};

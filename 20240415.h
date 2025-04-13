@@ -3,12 +3,10 @@
 #include "GlobalVars.h"
 #include "Arduino.h"
 
-class UV_S {
+class DM_S {
 public:
+  String getTurbidity();
   void initialize();
-  String getUV();
-  String getLMHUV();
-  UV_S();
+  DM_S();
 private:
-  int uv = 0;
 };

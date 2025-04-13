@@ -1,17 +1,18 @@
 #include "RTC.h"
 
-void Time::initialize() {
+void RTC_S::initialize() {
   if (!isInited) {
     rtc.begin();
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     isInited=true;
+    Serial.println("...RTC successfully connected!...");
   } else {
-    //Pass
+    Serial.println("...RTC connection error!...");
   }
   
 }
 
-String Time::getCurrentTime() {
+String RTC_S::getCurrentTime() {
   String currentTime;
   DateTime nows = rtc.now();
 
@@ -24,7 +25,7 @@ String Time::getCurrentTime() {
   return currentTime;
 }
 
-String Time::getCurrentDate() {
+String RTC_S::getCurrentDate() {
   String currenrDate;
   DateTime nows = rtc.now();
 
@@ -37,9 +38,12 @@ String Time::getCurrentDate() {
   return currenrDate;
 }
 
-String Time::getCurrentDayOfTheWeek() {
+String RTC_S::getCurrentDayOfTheWeek() {
   DateTime nows = rtc.now();
 
   return String(daysOfTheWeek[nows.dayOfTheWeek()]);
 }
 
+RTC_S::RTC_S() {
+  pinMode(RTC_PIN, INPUT);
+}
