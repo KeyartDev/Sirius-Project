@@ -70,21 +70,27 @@ void loop() {
 }
 
 void setupWebsite() {
+  Serial.println("Setting up website...");
   WiFi.softAP(AP_SSID, AP_PASS);
+  Serial.print("...Access point has been successfully created with IP: ");
    
   IPAddress myIP = WiFi.softAPIP();
-  Serial.print("AP IP address: ");
-  Serial.println(myIP);
+  Serial.print(myIP); Serial.println("..");
   
   ui.attachBuild(build);
   ui.attach(action);
   ui.start();
 
+  Serial.println("...Website started!...");
+  
   ui.uploadAuto(true);
   ui.downloadAuto(true);
   ui.start();
-    if (!LittleFS.begin(true)) {
-    Serial.println("FS Error"); 
+  if (!LittleFS.begin(true)) {
+    Serial.println("...FS Error!"); 
+  } else {
+    Serial.println("...FS inited!...");
   }
   ui.setFS(&LittleFS);
+  Serial.println("...Website has ben initialized!");
 }
