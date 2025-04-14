@@ -16,6 +16,5 @@ String Holl_S::getWindSpeed() {
 }
 
 Holl_S::Holl_S() {
-  
   pinMode(HOLL_PIN, INPUT);
 }
